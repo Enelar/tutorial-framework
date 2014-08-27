@@ -25,6 +25,7 @@ public:
                                            Awesomium::kWebViewType_Window);
 
     web_view_->set_view_listener(this);
+    g_active_views_.push_back(this);
 
     // Create our WinAPI Window
     HINSTANCE hInstance = GetModuleHandle(0);
@@ -49,8 +50,6 @@ public:
     UpdateWindow(hwnd_);
 
     SetTimer (hwnd_, 0, 15, NULL );
-
-    g_active_views_.push_back(this);
   }
 
   virtual ~ViewWin() {
